@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clickable Image Game</title>
+	<style>
+	#game {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 80vw;
+		height: 80vh;
+	}
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 20vw;
+		height: 20vh;
+	}
+    img:hover {
+  box-shadow: rgba(50, 29, 7, 0.35) 0 -25px 18px -14px inset,rgba(51, 29, 6, 0.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(77, 51, 9, 0.25) 0 4px 8px,rgba(80, 53, 12, 0.25) 0 8px 16px,rgba(93, 57, 13, 0.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+body {
+          background-image: url("re.jpg");
+          
+          background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+        }
+        @media (max-width: 480px) {
+  body {
+    background-size: contain;
+  }}
+	</style>
+</head>
+<body>
+	<div id="game">
+		<img id="mole" src="anissa.png">
+	</div>
+	<script>
+		let score = 0;
+		let timer = null;
+		const game = document.getElementById('game');
+		const mole = document.getElementById('mole');
+		mole.addEventListener('click', () => {
+			clearTimeout(timer);
+			score++;
+			document.getElementById('score').textContent = `Score: ${score}`;
+			mole.style.top = `${Math.random() * (game.offsetHeight - mole.offsetHeight)}px`;
+			mole.style.left = `${Math.random() * (game.offsetWidth - mole.offsetWidth)}px`;
+			timer = setTimeout(() => {
+				alert('أنيسة تبعي كي نعود نشرح');
+                let score = 0;}, 1000);
+		});
+		timer = setTimeout(() => {
+			alert('أنيسة تبعي كي نعود نشرح');
+            let score = 0;
+		}, 1000);
+		const scoreBoard = document.createElement('div');
+		scoreBoard.style.position = 'absolute';
+		scoreBoard.style.top = '10px';
+		scoreBoard.style.right = '10px';
+		scoreBoard.style.fontSize = '24px';
+		scoreBoard.style.color = 'white';
+		scoreBoard.id = 'score';
+		scoreBoard.textContent = 'Score: 0';
+		game.appendChild(scoreBoard);
+	</script>
+</body>
+</html>
